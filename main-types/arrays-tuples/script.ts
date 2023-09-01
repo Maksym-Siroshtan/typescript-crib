@@ -28,3 +28,11 @@ userTuple.pop(); // Working...
 const [id, firstname] = userTuple;
 
 const array: [number, string, ...boolean[]] = [1, "John", true, false, true];
+
+// Readonly
+const userTupleOnlyReadTuples: readonly [number, string] = [1, "John"];
+// userTupleOnlyRead.push(2); Property 'push' does not exist on type 'readonly [number, string]'.
+//  userTupleOnlyRead[0] = 2
+const colorsOnlyReadArray: readonly string[] = ["Red", "Green", "Blue"];
+// colorsOnlyReadArray[1] = 'Black'; Index signature in type 'readonly string[]' only permits reading.
+const colorsOnlyReadArrayG: ReadonlyArray<string> = ["Red", "Green", "Blue"];
