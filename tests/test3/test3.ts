@@ -30,7 +30,7 @@ interface IFailedResponse {
   data: IPaymentFailedRequest;
 }
 
-const payment: IPaymentRequest = {
+const paymentTest: IPaymentRequest = {
   sum: 10000,
   from: 2,
   to: 4,

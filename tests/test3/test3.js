@@ -4,7 +4,7 @@ var StatusRequest;
     StatusRequest["Success"] = "success";
     StatusRequest["Failed"] = "failed";
 })(StatusRequest || (StatusRequest = {}));
-const payment = {
+const paymentTest = {
     sum: 10000,
     from: 2,
     to: 4,
