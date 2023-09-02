@@ -1,8 +1,8 @@
-// constructor
 class User2 {
   name: string;
   age: number;
 
+  // Overloads
   constructor();
   constructor(name: string);
   constructor(age: number);

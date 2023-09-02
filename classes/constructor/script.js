@@ -1,5 +1,4 @@
 "use strict";
-// constructor
 class User2 {
     constructor(nameOrAge, age) {
         if (typeof nameOrAge === "string") {
