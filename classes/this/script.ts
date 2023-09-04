@@ -60,3 +60,45 @@ console.log(
   "Результат получения на наследуемом экземпляре класса: ",
   paymentPersistent.save()
 );
+
+// Typing this
+class UserBuilder {
+  name: string;
+
+  setName(name: string): this {
+    // Если указать жёстко возвращаемое значение UserBuilder то у нас будет колизия типов
+    // userBuilder будет типа UserBuilder
+    // adminBuilder будет также типа UserBuilder, потому что мы наследуемся от UserBuilder, это нас не устраивает
+    // Из-за этого метод должен возвратить this, именно тот экземпляр на котором вызван метод
+    this.name = name;
+    return this;
+  }
+
+  isAdmin(): this is AdminBuilder {
+    // typeGuard с помощью this
+    return this instanceof AdminBuilder;
+  }
+}
+
+class AdminBuilder extends UserBuilder {
+  roles: string[];
+}
+
+const userBuilder = new UserBuilder().setName("User"); // const userBuilder: UserBuilder
+const adminBuilder = new AdminBuilder().setName("Admin"); // const adminBuilder: AdminBuilder
+
+let userOrAdminBuilder: UserBuilder | AdminBuilder = new UserBuilder();
+
+if (userOrAdminBuilder.isAdmin()) {
+  console.log("Admin", userOrAdminBuilder); // userOrAdminBuilder: AdminBuilder
+} else {
+  console.log("User", userOrAdminBuilder); // userOrAdminBuilder: UserBuilder
+}
+
+// Если закомментировать свойство roles в AdminBuilder (стр.83) у нас получится следующая ситуация
+if (userOrAdminBuilder.isAdmin()) {
+  console.log("Admin", userOrAdminBuilder); // userOrAdminBuilder: UserBuilder | AdminBuilder
+} else {
+  console.log("User", userOrAdminBuilder); // userOrAdminBuilder: never
+}
+// Т.к. после удаления свойства roles в AdminBuilder (стр.83) наши объекты стали идентичными typeGuard не сработал и в runtime мы не сможем определить какой из объектов adminBuilder. Для коррекстного поведения необходимо чтобы объекты отличались

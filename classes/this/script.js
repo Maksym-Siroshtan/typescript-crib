@@ -48,3 +48,36 @@ class PaymentPersistent extends Payment5 {
 }
 const paymentPersistent = new PaymentPersistent();
 console.log("Результат получения на наследуемом экземпляре класса: ", paymentPersistent.save());
+// Typing this
+class UserBuilder {
+    setName(name) {
+        // Если указать жёстко возвращаемое значение UserBuilder то у нас будет колизия типов
+        // userBuilder будет типа UserBuilder
+        // adminBuilder будет также типа UserBuilder, потому что мы наследуемся от UserBuilder, это нас не устраивает
+        // Из-за этого метод должен возвратить this, именно тот экземпляр на котором вызван метод
+        this.name = name;
+        return this;
+    }
+    isAdmin() {
+        return this instanceof AdminBuilder;
+    }
+}
+class AdminBuilder extends UserBuilder {
+}
+const userBuilder = new UserBuilder().setName("User"); // const userBuilder: UserBuilder
+const adminBuilder = new AdminBuilder().setName("Admin"); // const adminBuilder: AdminBuilder
+let userOrAdminBuilder = new UserBuilder();
+if (userOrAdminBuilder.isAdmin()) {
+    console.log("Admin", userOrAdminBuilder); // userOrAdminBuilder: AdminBuilder
+}
+else {
+    console.log("User", userOrAdminBuilder); // userOrAdminBuilder: UserBuilder
+}
+// Если закомментировать свойство roles в AdminBuilder (стр.83) у нас получится следующая ситуация
+if (userOrAdminBuilder.isAdmin()) {
+    console.log("Admin", userOrAdminBuilder); // userOrAdminBuilder: UserBuilder | AdminBuilder
+}
+else {
+    console.log("User", userOrAdminBuilder); // userOrAdminBuilder: never
+}
+// Т.к. после удаления свойства roles в AdminBuilder (стр.83) наши объекты стали идентичными
