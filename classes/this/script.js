@@ -59,6 +59,7 @@ class UserBuilder {
         return this;
     }
     isAdmin() {
+        // typeGuard с помощью this
         return this instanceof AdminBuilder;
     }
 }
@@ -80,4 +81,4 @@ if (userOrAdminBuilder.isAdmin()) {
 else {
     console.log("User", userOrAdminBuilder); // userOrAdminBuilder: never
 }
-// Т.к. после удаления свойства roles в AdminBuilder (стр.83) наши объекты стали идентичными
+// Т.к. после удаления свойства roles в AdminBuilder (стр.83) наши объекты стали идентичными typeGuard не сработал и в runtime мы не сможем определить какой из объектов adminBuilder. Для коррекстного поведения необходимо чтобы объекты отличались
