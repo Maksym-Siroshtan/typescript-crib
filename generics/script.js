@@ -42,3 +42,11 @@ function getSlicedHalf(data) {
 // const spliceNumberArray = [1, 2, 3, 4];
 const slicedStringArray = getSlicedHalf(["a", "b", "c", "d"]);
 const slicedNumberArray = getSlicedHalf([1, 2, 3, 4]);
+// Generic как тип функции, а также использование с interface и type
+const sliceFoo = getSlicedHalf;
+const logLine = {
+    timeStamp: new Date(),
+    data: {
+        a: 1,
+    },
+};

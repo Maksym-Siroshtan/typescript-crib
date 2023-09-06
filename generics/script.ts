@@ -36,3 +36,23 @@ function getSlicedHalf<T>(data: Array<T>): Array<T> {
 // const spliceNumberArray = [1, 2, 3, 4];
 const slicedStringArray = getSlicedHalf<string>(["a", "b", "c", "d"]);
 const slicedNumberArray = getSlicedHalf<number>([1, 2, 3, 4]);
+
+// Generic как тип функции, а также использование с interface и type
+const sliceFoo: <T>(data: Array<T>) => Array<T> = getSlicedHalf;
+
+interface ILogLine<T> {
+  timeStamp: Date;
+  data: T;
+}
+
+type LogLineType<T> = {
+  timeStamp: Date;
+  data: T;
+};
+
+const logLine: LogLineType<{ a: number }> = {
+  timeStamp: new Date(),
+  data: {
+    a: 1,
+  },
+};
