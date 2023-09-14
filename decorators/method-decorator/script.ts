@@ -1,7 +1,7 @@
 interface IUserService6 {
   users: number;
 
-  getUsersInDatabase();
+  getUsersInDatabase(): number;
 }
 
 class UserService6 implements IUserService6 {
@@ -9,13 +9,13 @@ class UserService6 implements IUserService6 {
 
   // @Log // Дескриптор метода
   @Log() // Factory decorator
-  getUsersInDatabase() {
+  getUsersInDatabase(): number {
     throw new Error("Error");
   }
 }
 
 // function Log(
-//   target: object,
+//   target: Object,
 //   propertyKey: string | symbol,
 //   descriptor: TypedPropertyDescriptor<(...args: any[]) => any>
 // ): TypedPropertyDescriptor<(...args: any[]) => any> | void {
@@ -31,7 +31,7 @@ class UserService6 implements IUserService6 {
 
 function Log() {
   return (
-    target: object,
+    target: Object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<(...args: any[]) => any>
   ): TypedPropertyDescriptor<(...args: any[]) => any> | void => {

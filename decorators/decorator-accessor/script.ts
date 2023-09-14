@@ -23,7 +23,7 @@ class UserService9 implements IUserService9 {
 
 function Log9() {
   return (
-    target: object,
+    target: Object,
     _: string | symbol,
     descriptor: PropertyDescriptor
   ) => {

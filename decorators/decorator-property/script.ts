@@ -14,7 +14,7 @@ class UserService8 implements IUserService8 {
 }
 
 function Max(max: number) {
-  return (target: object, propertyKey: string | symbol) => {
+  return (target: Object, propertyKey: string | symbol) => {
     let value: number;
 
     const setter = function (newValue: number) {

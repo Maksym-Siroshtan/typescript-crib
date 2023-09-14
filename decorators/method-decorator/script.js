@@ -15,7 +15,7 @@ __decorate([
     Log() // Factory decorator
 ], UserService6.prototype, "getUsersInDatabase", null);
 // function Log(
-//   target: object,
+//   target: Object,
 //   propertyKey: string | symbol,
 //   descriptor: TypedPropertyDescriptor<(...args: any[]) => any>
 // ): TypedPropertyDescriptor<(...args: any[]) => any> | void {
