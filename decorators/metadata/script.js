@@ -70,4 +70,4 @@ function Validate() {
 const userService11 = new UserService11();
 console.log(userService11.setUsersInDatabase(10));
 // console.log(userService11.setUsersInDatabase(-1)); Error Число должно быть больше нуля
-console.log(userService11.getUsersInDatabase());
+console.log(userService11.getUsersInDatabase()); // 10
