@@ -7,6 +7,7 @@ class UserHistory {
     }
     clone() {
         let target = new UserHistory(this.name, this.email);
+        target.createdAt = this.createdAt; // При клонировании объекта запишем время создания оригинала
         return target;
     }
 }
